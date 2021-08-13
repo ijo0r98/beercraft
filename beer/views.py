@@ -248,9 +248,9 @@ def ver4(request):
             
         df.insert(0, 'overall_new', overall_list)
         beer_list = df.sort_values(by='overall_new')['맥주'][:3].tolist()
-        beer_result_first = beer_list[0]
-        beer_result_second = beer_list[1]
-        beer_result_third = beer_list[2]
+        beer_result_first = beer_list[0].strip()
+        beer_result_second = beer_list[1].strip()
+        beer_result_third = beer_list[2].strip()
 
 
         return render(request, 'beer/ver4_result.html', {
