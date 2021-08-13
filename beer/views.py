@@ -71,6 +71,7 @@ def comment_modify(request, comment_id):
     return render(request, 'beer/comment_form.html', context)
     
 # ===================================================================================
+
 def comment_create_answer(request, answer_id):
     answer = get_object_or_404(Comment, pk=answer_id)
     if request.method == "POST":
@@ -124,8 +125,8 @@ def vote_answer(request, answer_id):
     else:
         answer.voter.add(request.user)
     return redirect('detail', DetailInfo_id=answer.post.id)
-# ===================================================================================
 
+# ===================================================================================
 
 # 우리가 예측한 평점과 실제 평점간의 차이를 MSE로 계산
 def get_mse(pred, actual):
@@ -205,7 +206,6 @@ def recomm_beer(item_sim_df, beer_name):
     return item_sim_df[beer_name].sort_values(ascending=False)[1:4]
 
 
-
 def ver3(request):
     if request.method == 'POST':
         return render(request, 'beer/ver3_result.html')
@@ -247,10 +247,10 @@ def ver4(request):
             overall_list.append(overall)
             
         df.insert(0, 'overall_new', overall_list)
-        beer_list = df.sort_values(by='overall_new')['맥주'][:3]
-        beer_result_first = df.sort_values(by='overall_new')['맥주'][0]
-        beer_result_second = df.sort_values(by='overall_new')['맥주'][1]
-        beer_result_third = df.sort_values(by='overall_new')['맥주'][2]
+        beer_list = df.sort_values(by='overall_new')['맥주'][:3].tolist()
+        beer_result_first = beer_list[0]
+        beer_result_second = beer_list[1]
+        beer_result_third = beer_list[2]
 
 
         return render(request, 'beer/ver4_result.html', {
@@ -259,8 +259,6 @@ def ver4(request):
             'beer_result_second':beer_result_second,
             'beer_result_third':beer_result_third,
             })
-
-
 
 
 def ver1(request):
