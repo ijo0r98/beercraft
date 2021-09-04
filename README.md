@@ -4,7 +4,7 @@
 
 [LIKELION & K-DIGITAL] Team1의 파이널 프로젝트 - 협업 필터링 기반 맥주 추천 시스템
 
-<br>
+▶️ http://15.164.206.167/ (용석님 블로그 참고 https://flowermisty.tistory.com/44?category=967097)
 
 #### 🛠 환경
 - python3.8
